@@ -1,10 +1,13 @@
 import React, { useRef, useState } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { login } from "../../../services/authService";
+import { setUser } from "../../../redux/actions/userActions";
 import CenteredContainer from "../AuthContainer/index.jsx";
 
 export default function Login() {
+  const dispatch = useDispatch();
   const history = useHistory();
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -23,6 +26,9 @@ export default function Login() {
       if (response.data.error) {
         return setError(response.data.error);
       }
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("user", response.data.user);
+      dispatch(setUser(response.data));
       history.push("/");
     });
     setLoading(false);

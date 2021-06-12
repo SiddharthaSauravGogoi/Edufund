@@ -1,9 +1,9 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function ProtectedRoute({ component: Component, ...rest }) {
-  /** dummy value to currentUser for now */
-  const currentUser = true;
+  const currentUser = useSelector((state) => state.userDetails.user);
   return (
     <Route
       {...rest}
