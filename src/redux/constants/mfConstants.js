@@ -1,0 +1,3 @@
+export const GET_ALL_MF = 'GET_ALL_MF'
+export const SET_SEARCH_TERM = 'SET_SEARCH_TERM'
+export const SET_MF_SEARCH_RESULTS = 'SET_MF_SEARCH_RESULTS'
