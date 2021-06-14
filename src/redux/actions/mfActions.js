@@ -1,6 +1,7 @@
 import {
     GET_ALL_MF,
     SET_MF_SEARCH_RESULTS,
+    SET_SCHEME_DATA,
     SET_SEARCH_TERM
 } from "../constants/mfConstants"
 
@@ -22,5 +23,12 @@ export const setMFSearchResults = (results) => {
     return {
         type: SET_MF_SEARCH_RESULTS,
         results
+    }
+}
+
+export const setSchemeData = (scheme) => {
+    return {
+        type: SET_SCHEME_DATA,
+        scheme
     }
 }

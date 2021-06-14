@@ -1,10 +1,11 @@
-import { GET_ALL_MF, SET_MF_SEARCH_RESULTS, SET_SEARCH_TERM } from "../constants/mfConstants"
+import { GET_ALL_MF, SET_MF_SEARCH_RESULTS, SET_SCHEME_DATA, SET_SEARCH_TERM } from "../constants/mfConstants"
 
 const initState = {
     allMutualFunds: [],
     fiveMutualFunds: [],
     searchTerm: [],
-    searchResults: []
+    searchResults: [],
+    schemeData: ''
 }
 
 const reducer = (state = initState, action) => {
@@ -24,6 +25,11 @@ const reducer = (state = initState, action) => {
             return {
                 ...state,
                 searchResults: action.results
+            }
+        case SET_SCHEME_DATA:
+            return {
+                ...state,
+                schemeData: action.scheme
             }
         default:
             return state;

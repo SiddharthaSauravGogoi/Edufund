@@ -5,10 +5,10 @@ import PropTypes from 'prop-types';
 
 export default function CardComponent({ scheme }) {
   return (
-    <Card style={{ margin: "0.5rem 0" }} key={scheme.schemeName}>
+    <Card style={{ margin: "0.5rem 0" }} >
       <Card.Body>
         <Card.Title>{scheme.schemeName}</Card.Title>
-        <Link to={`/details/:${scheme.schemeCode}`}>View Details</Link>
+        <Link to={`/details/${scheme.schemeCode}`}>View Details</Link>
       </Card.Body>
     </Card>
   )
