@@ -23,7 +23,7 @@ export default function MFData() {
       <Navigation />
       <Row>
         <Col>
-          <MetaData schemeData={schemeData.meta} />
+          {schemeData ? <MetaData schemeData={schemeData.meta} /> : null}
         </Col>
       </Row>
     </Container>

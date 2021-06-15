@@ -8,6 +8,7 @@ import {
   setMFData,
   setMFSearchResults,
   setMFSearchTerm,
+  setVisibility,
 } from "../../redux/actions/mfActions";
 import CardComponent from "../../components/Card";
 
@@ -16,6 +17,12 @@ export default function Listing() {
 
   const allMF = useSelector((state) => state.mutualFundData.allMutualFunds);
   const searchTerm = useSelector((state) => state.mutualFundData.searchTerm);
+  const resultsVisibility = useSelector(
+    (state) => state.mutualFundData.resultsVisibility
+  );
+  const searchResults = useSelector(
+    (state) => state.mutualFundData.searchResults
+  );
   const fiveMFData = useSelector(
     (state) => state.mutualFundData.fiveMutualFunds
   );
@@ -45,11 +52,13 @@ export default function Listing() {
 
   useEffect(() => {
     if (searchTerm.length >= 2) {
+      dispatch(setVisibility(true));
       let filteredResults = allMF.filter((item) =>
         item.schemeName.toLowerCase().startsWith(searchTerm)
       );
-      dispatch(setMFSearchResults(filteredResults));
+      return dispatch(setMFSearchResults(filteredResults));
     }
+    dispatch(setVisibility(false));
   }, [searchTerm, allMF, dispatch]);
 
   return (
@@ -57,7 +66,12 @@ export default function Listing() {
       <Navigation />
       <Row>
         <Col style={{ position: "relative" }}>
-          <Search searchTerm={searchTerm} handleChange={handleChange} />
+          <Search
+            searchTerm={searchTerm}
+            handleChange={handleChange}
+            searchResults={searchResults}
+            visiblity={resultsVisibility}
+          />
         </Col>
       </Row>
       <Row>
