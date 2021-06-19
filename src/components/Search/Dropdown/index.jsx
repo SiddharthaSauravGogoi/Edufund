@@ -15,14 +15,8 @@ export default function SearchDropdown({ searchResults }) {
         padding: "1rem 0",
       }}
     >
-      {" "}
       {searchResults.map((item) => (
-        <Link
-          to={`/details/${item.schemeCode}`}
-          key={item.schemeName}
-          style={{ margin: "10rem 0" }}
-        >
-          {" "}
+        <Link to={`/details/${item.schemeCode}`} key={item.schemeName}>
           {item.schemeName}
         </Link>
       ))}

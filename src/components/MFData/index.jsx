@@ -18,6 +18,7 @@ export default function MFData() {
       dispatch(setSchemeData(response.data));
     });
   }, [scheme, dispatch]);
+
   return (
     <Container>
       <Navigation />

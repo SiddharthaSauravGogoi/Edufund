@@ -4,6 +4,7 @@ import cors from 'cors';
 import { mongoURI } from '../config/config';
 
 import authRoutes from '../app/routes/auth.routes';
+import settingRoutes from '../app/routes/settings.routes';
 
 const app = express();
 const port = process.env.PORT || 8000
@@ -16,6 +17,7 @@ mongoose.set('useCreateIndex', true)
 mongoose.Promise = global.Promise
 
 authRoutes(app);
+settingRoutes(app);
 
 mongoose.connect(mongoURI, {
     useNewUrlParser: true,

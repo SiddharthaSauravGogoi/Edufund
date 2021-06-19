@@ -1,4 +1,4 @@
-import { USER_LOGGED_IN } from '../constants/userConstants';
+import { USER_DATA_UPDATE, USER_LOGGED_IN } from '../constants/userConstants';
 
 const initState = {
     token: '',
@@ -13,6 +13,11 @@ const reducer = (state = initState, action) => {
                 token: action.userData.token,
                 user: action.userData.user
             };
+        case USER_DATA_UPDATE:
+            return {
+                ...state,
+                user: action.userData
+            }
         default:
             return state;
     }

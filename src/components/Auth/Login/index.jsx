@@ -26,7 +26,7 @@ export default function Login() {
       if (response.data.error) {
         return setError(response.data.error);
       }
-      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("token", JSON.stringify(response.data.token));
       localStorage.setItem("user", response.data.user);
       dispatch(setUser(response.data));
       history.push("/");
@@ -52,9 +52,6 @@ export default function Login() {
               Log In
             </Button>
           </Form>
-          <div className="w-100 text-center mt-2">
-            <Link to="/forgot_password">Forgot Password</Link>
-          </div>
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">

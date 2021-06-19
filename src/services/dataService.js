@@ -11,3 +11,8 @@ export const fetchMFData = (schemeCode) => {
     return axios.get(`https://api.mfapi.in/mf/${schemeCode}`)
         .then((response) => response)
 }
+
+export const updateUserSettings = (userDetails) => {
+    return axios.put(`${url}/profile`, { userDetails })
+        .then((response) => response)
+}
