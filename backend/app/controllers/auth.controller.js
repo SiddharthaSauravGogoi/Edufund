@@ -1,7 +1,5 @@
 import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
 import User from '../models/User.model';
-import { secretKey } from '../../config/config'
 
 export const register = (req, res) => {
   const { email, password, name, dob, gender } = req.body.userDetails
@@ -13,7 +11,6 @@ export const register = (req, res) => {
   }
   User.findOne({ email })
     .then((data) => {
-      console.log(data)
       if (data) {
         res.send({ error: 'Email already registered' });
       } else {
@@ -39,14 +36,8 @@ export const login = (req, res) => {
         if (!bcrypt.compareSync(password, user.password)) {
           res.send({ error: "You entered a wrong password" })
         } else if (bcrypt.compareSync(password, user.password)) {
-          const payload = {
-            id: user._id,
-            email: user.email
-          }
-          let token = jwt.sign(payload, secretKey, {
-            expiresIn: "1h"
-          });
-          res.status(200).json({ token, user: user.toJSON() });
+          delete user.password;
+          res.status(200).json({ user: user.toJSON() });
 
         }
       }

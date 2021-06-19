@@ -26,7 +26,6 @@ export default function Login() {
       if (response.data.error) {
         return setError(response.data.error);
       }
-      localStorage.setItem("token", JSON.stringify(response.data.token));
       localStorage.setItem("user", response.data.user);
       dispatch(setUser(response.data));
       history.push("/");
