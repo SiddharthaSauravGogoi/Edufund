@@ -26,6 +26,7 @@ export default function Profile() {
   const [error, setError] = useState(false);
   const [passwordSpinner, setPasswordSpinner] = useState(false);
   const [settingsSpinner, setSettingsSpinner] = useState(false);
+  const [passwordChangeMsg, setPasswordChangeMsg] = useState("");
 
   const password = useRef();
   const newPassword = useRef();
@@ -34,10 +35,9 @@ export default function Profile() {
 
   const handlePassword = (event) => {
     event.preventDefault();
-    console.log(password.current.value, newPassword.current.value);
-
+    setError("");
+    passwordChangeMsg("");
     if (password.current.value && newPassword.current.value) {
-      console.log(password.current.value, newPassword.current.value);
       let userDetails = {
         email: user.email,
         password: password.current.value,
@@ -50,6 +50,9 @@ export default function Profile() {
         if (response.data.error) {
           return setError(response.data.error);
         }
+        setPasswordChangeMsg("Password successfully changed.");
+        password.current.value = "";
+        newPassword.current.value = "";
       });
     }
   };
@@ -166,6 +169,7 @@ export default function Profile() {
         handlePassword={handlePassword}
         password={password}
         newPassword={newPassword}
+        passwordChangeMsg={passwordChangeMsg}
       />
     </Container>
   );

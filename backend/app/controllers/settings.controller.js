@@ -66,11 +66,13 @@ export const updatePassword = (req, res) => {
       if (!bcrypt.compareSync(password, user.password)) {
         res.send({ error: "You entered a wrong password" })
       } else if (bcrypt.compareSync(password, user.password)) {
-        user.password = newPassword;
-        user.save()
-          .then((updatedDoc) => {
-            res.send({ msg: 'SUCCESS', data: updatedDoc })
-          })
+        bcrypt.hash(newPassword, 10, (err, hash) => {
+          user.password = hash;
+          user.save()
+            .then((updatedDoc) => {
+              res.send({ msg: 'SUCCESS', data: updatedDoc })
+            })
+        })
       }
     })
     .catch((err) => res.json({ error: err }))

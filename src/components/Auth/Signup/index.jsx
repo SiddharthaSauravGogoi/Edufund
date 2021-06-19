@@ -71,7 +71,7 @@ export default function Signup() {
             </Form.Group>
             <Form.Group id="gender">
               <Form.Label> Gender</Form.Label>
-              <Form.Control type="password" ref={genderRef} required />
+              <Form.Control type="text" ref={genderRef} required />
             </Form.Group>
             <Form.Group
               id="date-of-birth"

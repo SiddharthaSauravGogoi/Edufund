@@ -7,6 +7,7 @@ export default function PasswordSettings({
   handlePassword,
   password,
   newPassword,
+  passwordChangeMsg,
 }) {
   return (
     <Card className="d-flex align-items-center justify-content-center">
@@ -18,6 +19,7 @@ export default function PasswordSettings({
             <span className="visually-hidden">Loading...</span>
           </Spinner>
         ) : null}
+        {passwordChangeMsg.length ? passwordChangeMsg : null}
 
         {error && <Alert variant="danger"> {error}</Alert>}
         <Form onSubmit={handlePassword}>
