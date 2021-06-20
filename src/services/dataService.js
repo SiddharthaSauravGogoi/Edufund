@@ -12,7 +12,3 @@ export const fetchMFData = (schemeCode) => {
         .then((response) => response)
 }
 
-export const updateUserSettings = (userDetails) => {
-    return axios.put(`${url}/profile`, { userDetails })
-        .then((response) => response)
-}

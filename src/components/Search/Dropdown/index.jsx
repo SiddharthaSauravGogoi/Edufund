@@ -15,11 +15,13 @@ export default function SearchDropdown({ searchResults }) {
         padding: "1rem 0",
       }}
     >
-      {searchResults.map((item) => (
-        <Link to={`/details/${item.schemeCode}`} key={item.schemeName}>
-          {item.schemeName}
-        </Link>
-      ))}
+      {searchResults.length
+        ? searchResults.map((item) => (
+            <div key={item.schemeName} style={{ padding: "0.5rem 0" }}>
+              <Link to={`/details/${item.schemeCode}`}>{item.schemeName}</Link>
+            </div>
+          ))
+        : "No results"}
     </div>
   );
 }

@@ -8,7 +8,6 @@ export default function EmailSettings({ user, setEmail, handleEmail }) {
       <div className="d-flex align-items-center">
         <Form.Control
           type="email"
-          defaultValue={user.email}
           required
           onChange={(event) => setEmail(event.target.value)}
         />

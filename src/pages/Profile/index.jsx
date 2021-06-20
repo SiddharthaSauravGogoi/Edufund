@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
-import { Container, Card, Spinner } from "react-bootstrap";
+import { Container, Card, Spinner, Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import Navigation from "../../components/Navbar";
 import "react-datepicker/dist/react-datepicker.css";
 import {
@@ -18,6 +19,7 @@ import EmailSettings from "./EmailSettings";
 import GenderSettings from "./GenderSettings";
 
 export default function Profile() {
+  const history = useHistory();
   const user = useSelector((state) => state.userDetails.user);
   const [date, setStartDate] = useState("");
   const [name, setName] = useState("");
@@ -133,6 +135,12 @@ export default function Profile() {
     }
   };
 
+  const logout = (event) => {
+    event.preventDefault();
+    localStorage.clear();
+    history.push("/login");
+  };
+
   return (
     <Container>
       <Navigation />
@@ -144,23 +152,20 @@ export default function Profile() {
               <span className="visually-hidden">Loading...</span>
             </Spinner>
           ) : null}
-          <EmailSettings
-            user={user}
-            setEmail={setEmail}
-            handleEmail={handleEmail}
-          />
-          <NameSettings user={user} setName={setName} handleName={handleName} />
-          <GenderSettings
-            user={user}
-            setGender={setGender}
-            handleGender={handleGender}
-          />
+          <EmailSettings setEmail={setEmail} handleEmail={handleEmail} />
+          <NameSettings setName={setName} handleName={handleName} />
+          <GenderSettings setGender={setGender} handleGender={handleGender} />
           <DOBSettings
             date={date}
             handleDate={handleDate}
             setStartDate={setStartDate}
             handleDOB={handleDOB}
           />
+          <div className="d-flex justify-content-center">
+            <Button onClick={logout} className="mx-auto">
+              Logout
+            </Button>
+          </div>
         </Card.Body>
       </Card>
       <PasswordSettings

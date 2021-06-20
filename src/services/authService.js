@@ -12,13 +12,7 @@ export const login = (userDetails) => {
         .then((response) => response);
 }
 
-export const updateUserSettings = (userDetails) => {
-    return axios.put(`${url}/profile_settings`, { userDetails })
-        .then((response) => response)
-}
-
 export const updateEmail = (userDetails) => {
-    console.log('inside email service', userDetails)
     return axios.put(`${url}/email_settings`, { userDetails })
         .then((response) => response)
 }

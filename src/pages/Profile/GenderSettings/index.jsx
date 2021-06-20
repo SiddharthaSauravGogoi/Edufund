@@ -8,7 +8,6 @@ export default function GenderSettings({ user, setGender, handleGender }) {
       <div className="d-flex align-items-center">
         <Form.Control
           type="text"
-          defaultValue={user.gender}
           onChange={(event) => setGender(event.target.value)}
           required
         />

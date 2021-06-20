@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row, Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Search from "../../components/Search/index.jsx";
 import { fetchAllMutualFunds } from "../../services/dataService";
@@ -76,9 +76,15 @@ export default function Listing() {
       </Row>
       <Row>
         <Col>
-          {fiveMFData.map((scheme) => (
-            <CardComponent scheme={scheme} key={scheme.schemeName} />
-          ))}
+          {fiveMFData.length ? (
+            fiveMFData.map((scheme) => (
+              <CardComponent scheme={scheme} key={scheme.schemeName} />
+            ))
+          ) : (
+            <Spinner animation="border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
+          )}
         </Col>
       </Row>
     </Container>

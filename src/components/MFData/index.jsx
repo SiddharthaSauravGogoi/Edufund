@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Spinner } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchMFData } from "../../services/dataService";
 import Navigation from "../Navbar";
 import MetaData from "./MetaData";
 import { setSchemeData } from "../../redux/actions/mfActions";
+import Graph from "./Graph";
 
 export default function MFData() {
   const params = useParams();
@@ -22,11 +23,24 @@ export default function MFData() {
   return (
     <Container>
       <Navigation />
-      <Row>
-        <Col>
-          {schemeData ? <MetaData schemeData={schemeData.meta} /> : null}
-        </Col>
-      </Row>
+      {schemeData ? (
+        <>
+          <Row>
+            <Col>
+              {schemeData ? <MetaData schemeData={schemeData.meta} /> : null}
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              {schemeData ? <Graph schemeData={schemeData.data} /> : null}
+            </Col>
+          </Row>
+        </>
+      ) : (
+        <Spinner animation="border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      )}
     </Container>
   );
 }

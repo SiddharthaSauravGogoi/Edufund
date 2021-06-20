@@ -8,7 +8,6 @@ export default function NameSettings({ user, setName, handleName }) {
       <div className="d-flex align-items-center">
         <Form.Control
           type="text"
-          defaultValue={user.name}
           onChange={(event) => setName(event.target.value)}
           required
         />
