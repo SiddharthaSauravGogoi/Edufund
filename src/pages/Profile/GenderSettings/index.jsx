@@ -1,7 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Form, Button } from "react-bootstrap";
 
-export default function GenderSettings({ user, setGender, handleGender }) {
+export default function GenderSettings({ setGender, handleGender }) {
   return (
     <Form.Group>
       <Form.Label>Gender</Form.Label>
@@ -16,3 +17,8 @@ export default function GenderSettings({ user, setGender, handleGender }) {
     </Form.Group>
   );
 }
+
+GenderSettings.propTypes = {
+  setGender: PropTypes.func,
+  handleGender: PropTypes.func,
+};

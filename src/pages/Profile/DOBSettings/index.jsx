@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Form, Button } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 
@@ -28,3 +29,10 @@ export default function DOBSettings({
     </Form.Group>
   );
 }
+
+DOBSettings.propTypes = {
+  date: PropTypes.string,
+  setStartDate: PropTypes.func,
+  handleDate: PropTypes.func,
+  handleDOB: PropTypes.func,
+};

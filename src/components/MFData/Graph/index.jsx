@@ -9,6 +9,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import PropTypes from "prop-types";
 
 export default function Graph({ schemeData }) {
   return (
@@ -34,3 +35,7 @@ export default function Graph({ schemeData }) {
     </ResponsiveContainer>
   );
 }
+
+Graph.propTypes = {
+  schemeData: PropTypes.array,
+};

@@ -1,7 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Form, Button } from "react-bootstrap";
 
-export default function EmailSettings({ user, setEmail, handleEmail }) {
+export default function EmailSettings({ setEmail, handleEmail }) {
   return (
     <Form.Group>
       <Form.Label>Email</Form.Label>
@@ -16,3 +17,8 @@ export default function EmailSettings({ user, setEmail, handleEmail }) {
     </Form.Group>
   );
 }
+
+EmailSettings.propTypes = {
+  setEmail: PropTypes.func,
+  handleEmail: PropTypes.func,
+};

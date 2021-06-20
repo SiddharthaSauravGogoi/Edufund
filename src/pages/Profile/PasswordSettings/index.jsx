@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Card, Form, Button, Alert, Spinner } from "react-bootstrap";
 
 export default function PasswordSettings({
@@ -39,3 +40,12 @@ export default function PasswordSettings({
     </Card>
   );
 }
+
+PasswordSettings.propTypes = {
+  passwordSpinner: PropTypes.bool,
+  error: PropTypes.bool,
+  handlePassword: PropTypes.func,
+  password: PropTypes.object,
+  newPassword: PropTypes.object,
+  passwordChangeMsg: PropTypes.string,
+};

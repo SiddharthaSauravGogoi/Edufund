@@ -1,7 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Form, Button } from "react-bootstrap";
 
-export default function NameSettings({ user, setName, handleName }) {
+export default function NameSettings({ setName, handleName }) {
   return (
     <Form.Group>
       <Form.Label>Name</Form.Label>
@@ -16,3 +17,8 @@ export default function NameSettings({ user, setName, handleName }) {
     </Form.Group>
   );
 }
+
+NameSettings.propTypes = {
+  setName: PropTypes.func,
+  handleName: PropTypes.func,
+};

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 export default function SearchDropdown({ searchResults }) {
@@ -25,3 +26,7 @@ export default function SearchDropdown({ searchResults }) {
     </div>
   );
 }
+
+SearchDropdown.propTypes = {
+  searchResults: PropTypes.array,
+};

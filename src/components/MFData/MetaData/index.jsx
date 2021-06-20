@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Card, ListGroup } from "react-bootstrap";
 
 export default function MetaData({ schemeData }) {
@@ -17,3 +18,7 @@ export default function MetaData({ schemeData }) {
     </Card>
   );
 }
+
+MetaData.propTypes = {
+  schemeData: PropTypes.object,
+};
